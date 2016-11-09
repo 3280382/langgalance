@@ -32,7 +32,16 @@ const child_process = require('child_process');
 const child = child_process.spawn('ls', {
     stdio: [
       0, // Use parents stdin for child
-      'pipe', // Pipe child's stdout to parent
+      //'pipe', // Pipe child's stdout to parent
+	  fs.openSync('std.out','w'),
       fs.openSync('err.out', 'w') // Direct child's stderr to a file
     ]
 });
+child_process.exec('ls -l',function(error, stdout, stderr){
+	  if (error) {
+    console.error(`exec error: ${error}`);
+    return;
+  }
+  console.log(`stdout: ${stdout}`);
+  console.log(`stderr: ${stderr}`);
+})
