@@ -17,7 +17,8 @@ server.on('error', function (err){
   console.log(err);
 });
 
-
-server.listen(9999,function() {
+//var port=9999;
+var port="\\\\?\\pipe\\atom";
+server.listen(port,function() {
   console.log('opened server on', server.address());
 });

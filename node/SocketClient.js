@@ -1,5 +1,6 @@
 const net = require('net');
-const client = net.connect({host: 'localhost', port: 9999}, () => {
+//const client = net.connect({host: 'localhost', port: 9999}, () => {
+const client = net.connect({path: '\\\\?\\pipe\\atom'}, () => {
   // 'connect' listener
   console.log('connected to server!');
   client.write('world!\r\n');
